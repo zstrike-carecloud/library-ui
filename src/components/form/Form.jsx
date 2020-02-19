@@ -20,7 +20,7 @@ const Form = _ => {
             const fetchData = async () => {
                 const { data } = await axios({
                     method: 'get',
-                    url: `http://localhost:3000/books/${id}`,
+                    url: `http://localhost:3001/books/${id}`,
                 });
                 const { title, author, isbn, image, description } = data.books[0];
                 setTitle(title);
@@ -47,7 +47,7 @@ const Form = _ => {
             if (id) {
                 await axios({
                     method: 'put',
-                    url: `http://localhost:3000/books/${id}`,
+                    url: `http://localhost:3001/books/${id}`,
                     data: {
                         book: {
                             title,
@@ -62,7 +62,7 @@ const Form = _ => {
             } else {
                 await axios({
                     method: 'post',
-                    url: `http://localhost:3000/books/new`,
+                    url: `http://localhost:3001/books/new`,
                     data: {
                         book: {
                             title,
@@ -83,7 +83,7 @@ const Form = _ => {
         const saveData = async () => {
             await axios({
                 method: 'delete',
-                url: `http://localhost:3000/books/${id}`,
+                url: `http://localhost:3001/books/${id}`,
             });
             history.push(`/`);
         }

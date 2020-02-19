@@ -51,7 +51,7 @@ export default function StickyHeadTable() {
     const fetchData = async () => {
         const { data } = await axios({
             method: 'get',
-            url: 'http://localhost:3000/books',
+            url: 'http://localhost:3001/books',
         })
         setRows(data.books);
       };

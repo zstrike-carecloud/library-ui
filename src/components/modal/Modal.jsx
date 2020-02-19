@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import classes from './Modal.module.scss';
 
-const axios = require('axios').default;
-
+// TODO: Create modal wrapper that allows for different modal contents and actions
 const Modal = ({ showModal, setShowModal, confirmButtonAction }) => {
     const [borrower, setBorrower] = useState('');
 

@@ -14,7 +14,7 @@ const Details = (props) => {
         const fetchData = async () => {
             const { data } = await axios({
                 method: 'get',
-                url: `http://localhost:3000/books/${id}`,
+                url: `http://localhost:3001/books/${id}`,
             });
             setDetails(data.books[0]);
           };
@@ -24,7 +24,7 @@ const Details = (props) => {
     const checkInOut = async _ => {
         await axios({
             method: 'put',
-            url: `http://localhost:3000/books/${details.id}/${details.status ? 'checkout' : 'checkin'}`,
+            url: `http://localhost:3001/books/${details.id}/${details.status ? 'checkout' : 'checkin'}`,
         });
         setDetails({ ...details, status: details.status ? 0 : 1 })
     };

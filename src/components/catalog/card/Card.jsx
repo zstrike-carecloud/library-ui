@@ -14,7 +14,7 @@ const Card = ({ book, updateBookStatus }) => {
         const call = async borrower => {
             await axios({
                 method: 'put',
-                url: `http://localhost:3000/books/${book.id}/${book.status ? 'checkout' : 'checkin'}`,
+                url: `http://localhost:3001/books/${book.id}/${book.status ? 'checkout' : 'checkin'}`,
                 data: {
                     book: {
                         borrower,

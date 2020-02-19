@@ -21,7 +21,7 @@ const Catalog = ({ search, filter }) => {
         const fetchData = async () => {
             const { data } = await axios({
                 method: 'get',
-                url: 'http://localhost:3000/books',
+                url: 'http://localhost:3001/books',
             })
             setBooks(data.books);
           };
