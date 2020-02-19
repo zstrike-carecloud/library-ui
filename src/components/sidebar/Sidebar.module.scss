@@ -1,0 +1,61 @@
+.container {
+    height: 100%;
+    width: 20vw;
+    position: fixed;
+    padding: 20px 0px 0px 15px;
+    color: rgb(69,69,69);
+}
+
+.container .search {
+    width: 70%;
+    border-radius: 7px;
+    height: 20px;
+    outline-width: 0;
+    border-radius: 5px;
+    border: solid 1px lightgray;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+}
+
+.radioContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.radioContainer div {
+    margin-bottom: 20px;
+}
+
+.all {
+    display: flex;
+    flex-direction: row;
+    input {
+        width: 20px;
+    }
+    label {
+        font-size: 14px;
+    }
+}
+
+.available {
+    display: flex;
+    flex-direction: row;
+    input {
+        width: 20px;
+    }
+    label {
+        font-size: 14px;
+    }
+}
+
+.checkedOut {
+    display: flex;
+    flex-direction: row;
+    input {
+        width: 20px;
+    }
+    label {
+        font-size: 14px;
+    }
+}

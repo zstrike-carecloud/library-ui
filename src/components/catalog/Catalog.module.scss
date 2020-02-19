@@ -1,0 +1,11 @@
+.container {
+    height: 100%;
+    width: 80vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-template-rows: repeat(auto-fill, 300px);
+    grid-row-gap: .25em;
+    grid-column-gap: .25em;
+    margin-left: auto;
+    padding-top: 20px;
+}

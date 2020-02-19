@@ -1,0 +1,68 @@
+.content {
+    height: 100%;
+    margin-top: 60px;
+    background-color: rgb(220, 220, 220);
+}
+
+.container {
+    width: 60vw;
+    color: rgb(69, 69, 69);
+    display: grid;
+    grid-template-areas:
+      'cover cover empty empty edit checkButton'
+      'cover cover title title right right'
+      'cover cover author author footer footer'
+      'cover cover synopsis synopsis synopsis synopsis'
+      'cover cover synopsis synopsis synopsis synopsis'
+      'cover cover synopsis synopsis synopsis synopsis';
+    grid-template-columns: 150px 150px 150px 150px 150px 150px;
+    grid-template-rows: 75px 75px 75px 75px 75px 75px;
+    grid-gap: 10px;
+    padding: 30px;
+    background-color: white;
+    margin: 30px;
+    box-shadow: 2px 2px 10px lightgray;
+    overflow: hidden;
+}
+
+.container .edit, .checkInOutButton {
+    background-color: rgb(69, 69, 69);
+    border-radius: 3px;
+    color: white;
+    text-align: center;
+    justify-self: end;
+    font-size: small;
+    font-weight: 500;
+    line-height: 2.4;
+    height: 30px;
+    cursor: pointer;
+}
+
+.edit {
+    grid-area: edit;
+    width: 80px;
+}
+
+.checkInOutButton {
+    grid-area: checkButton;
+    width: 100px;
+}
+
+.cover {
+    grid-area: cover;
+    object-fit: cover;
+    width: 300px;
+    height: 500px;
+}
+
+.title {
+    grid-area: title;
+}
+
+.author {
+    grid-area: author;
+}
+
+.synopsis {
+    grid-area: synopsis;
+}
