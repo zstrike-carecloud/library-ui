@@ -10,8 +10,6 @@ const Details = (props) => {
     const [details, setDetails] = useState()
     const { id } = useParams();
 
-    console.log('PARAMS', id);
-
     useEffect(_ => {
         const fetchData = async () => {
             const { data } = await axios({

@@ -8,8 +8,6 @@ const axios = require('axios').default;
 const Catalog = ({ search, filter }) => {
     const [books, setBooks] = useState();
 
-    console.log('FILTER', filter);
-
     const updateBookStatus = (id, status) => {
         setBooks(books.map(book => {
             if (book.id === id) {

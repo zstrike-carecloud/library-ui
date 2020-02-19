@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState } from 'react';
 import { Catalog } from './components/catalog';
 import classes from './App.module.scss';
 import { Sidebar } from './components/sidebar';
@@ -21,8 +21,6 @@ function App() {
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('all');
 
-  console.log('SHOWMODAL', filter);
-
   const context = {
     showModal,
     setShowModal,
@@ -32,83 +30,68 @@ function App() {
   return (
     <Router>
       <ModalProvider value={context}>
-      <div className="App">
-        <Navbar />
-        <Modal 
-          showModal={showModal} 
-          setShowModal={setShowModal}
-          confirmButtonAction={confirmButtonAction} />
-        <Switch>
-          <Route
-            path={`/`}
-            exact
-            render={_ => (
-              <div className={classes.content}>
-                <Sidebar search={search} setSearch={setSearch} filter={filter} setFilter={setFilter} />
-                <Catalog search={search} filter={filter} />
-              </div>
-            )}
-          />
-          <Route
-            exact
-            key={Math.random()}
-            path={`/books/:id/details`}
-            render={_ => 
-              (
-                <div className={classes.formContent}>
-                  <Details />
+        <div className="App">
+          <Navbar />
+          <Modal 
+            showModal={showModal} 
+            setShowModal={setShowModal}
+            confirmButtonAction={confirmButtonAction} />
+          <Switch>
+            <Route
+              path={`/`}
+              exact
+              render={_ => (
+                <div className={classes.content}>
+                  <Sidebar search={search} setSearch={setSearch} filter={filter} setFilter={setFilter} />
+                  <Catalog search={search} filter={filter} />
                 </div>
               )}
-          />
-          <Route
-            exact
-            key={Math.random()}
-            path={`/books/new`}
-            render={_ => 
-              (
-                <div className={classes.formContent}>
-                  <Form />
-                </div>
-              )}
-          />
-          <Route
-            exact
-            path={`/books/:id/edit`}
-            render={_ => 
-              (
-                <div className={classes.formContent}>
-                  <Form />
-                </div>
-              )}
-          />
-          <Route
-            exact
-            path={`/books/report`}
-            render={_ => 
-              (
-                <div className={classes.formContent}>
-                  <Report />
-                </div>
-              )}
-          />
-        </Switch>
-
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    </div>
-    </ModalProvider>
+            />
+            <Route
+              exact
+              key={Math.random()}
+              path={`/books/:id/details`}
+              render={_ => 
+                (
+                  <div className={classes.formContent}>
+                    <Details />
+                  </div>
+                )}
+            />
+            <Route
+              exact
+              key={Math.random()}
+              path={`/books/new`}
+              render={_ => 
+                (
+                  <div className={classes.formContent}>
+                    <Form />
+                  </div>
+                )}
+            />
+            <Route
+              exact
+              path={`/books/:id/edit`}
+              render={_ => 
+                (
+                  <div className={classes.formContent}>
+                    <Form />
+                  </div>
+                )}
+            />
+            <Route
+              exact
+              path={`/books/report`}
+              render={_ => 
+                (
+                  <div className={classes.formContent}>
+                    <Report />
+                  </div>
+                )}
+            />
+          </Switch>
+        </div>
+      </ModalProvider>
     </Router>
   );
 }
