@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from './card';
 import classes from './Catalog.module.scss';
-// import { instance } from '../../axios/client';
-
-const axios = require('axios').default;
+import { axiosClient } from '../../axios/client';
 
 const Catalog = ({ search, filter }) => {
     const [books, setBooks] = useState();
@@ -19,15 +17,13 @@ const Catalog = ({ search, filter }) => {
 
     useEffect(_ => {
         const fetchData = async () => {
-            const { data } = await axios({
-                method: 'get',
-                url: 'http://localhost:3001/books',
-            })
+            const { data } = await axiosClient.get('/books')
             setBooks(data.books);
           };
           fetchData();
     }, []);
 
+    // TODO: Clean up
     const searchFilter = (cards, book) => {
         const statusToNumber = {
             'available': 0,

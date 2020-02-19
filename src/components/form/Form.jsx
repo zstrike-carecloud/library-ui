@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import classes from './Form.module.scss';
-import selectImage from './Placeholder.svg'
-
-const axios = require('axios').default;
+import selectImage from './Placeholder.svg';
+import { axiosClient } from '../../axios/client';
 
 const Form = _ => {
     const history = useHistory();
@@ -18,10 +17,7 @@ const Form = _ => {
     useEffect(_ => {
         if (id) {
             const fetchData = async () => {
-                const { data } = await axios({
-                    method: 'get',
-                    url: `http://localhost:3001/books/${id}`,
-                });
+                const { data } = await axiosClient.get(`/books/${id}`);
                 const { title, author, isbn, image, description } = data.books[0];
                 setTitle(title);
                 setAuthor(author);
@@ -31,7 +27,7 @@ const Form = _ => {
               };
               fetchData();
         }
-    }, []);
+    }, [id]);
 
     const changeCover = e => {
         // TODO: Set size of file limit
@@ -44,35 +40,20 @@ const Form = _ => {
 
     const onSave = _ => {
         const saveData = async () => {
+            const payload = { 
+                book: {
+                    title,
+                    author,
+                    isbn,
+                    image,
+                    description: synopsis,
+                }
+            };
             if (id) {
-                await axios({
-                    method: 'put',
-                    url: `http://localhost:3001/books/${id}`,
-                    data: {
-                        book: {
-                            title,
-                            author,
-                            isbn,
-                            image,
-                            description: synopsis,
-                        },
-                    }
-                });
+                await axiosClient.put(`/books/${id}`, payload);
                 history.push(`/books/${id}/details`)
             } else {
-                await axios({
-                    method: 'post',
-                    url: `http://localhost:3001/books/new`,
-                    data: {
-                        book: {
-                            title,
-                            author,
-                            isbn,
-                            image,
-                            description: synopsis,
-                        },
-                    }
-                });
+                await axiosClient.post(`/books/new`, payload);
                 history.push(`/`);
             }
         };
@@ -81,14 +62,14 @@ const Form = _ => {
 
     const onDelete = _ => {
         const saveData = async () => {
-            await axios({
-                method: 'delete',
-                url: `http://localhost:3001/books/${id}`,
-            });
+            await axiosClient.delete(`/books/${id}`);
             history.push(`/`);
         }
         saveData();
     };
+
+    // Tests for valid ISBN10 or 13
+    const isbnValidation = "((978[\--– ])?[0-9][0-9\--– ]{10}[\--– ][0-9xX])|((978)?[0-9]{9}[0-9Xx])";
 
     return (
         <div className={classes.container}>
@@ -111,7 +92,7 @@ const Form = _ => {
                 </div>
                 <div className={classes.isbn}>
                     <label>Isbn</label>
-                    <input type="text" name="name" onChange={({ target: { value } }) => setIsbn(value)} value={isbn} maxLength={13} />
+                    <input type="text" name="name" onChange={({ target: { value } }) => setIsbn(value)} value={isbn} maxLength={17} onBlur={e => e.target.reportValidity()} pattern={isbnValidation} title={"Ensure valid ISBN 10 or 13"} />
                 </div>
                 <div className={classes.synopsis}>
                     <label>Synopsis</label>

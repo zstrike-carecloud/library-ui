@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-const axios = require('axios').default;
+import { axiosClient } from '../../axios/client';
 
 const columns = [
   { id: 'title', label: 'Title', minWidth: 170 },
@@ -27,7 +27,6 @@ const columns = [
     id: 'status',
     label: 'Status',
     minWidth: 170,
-    // align: 'right',
     format: value => value ? 'Checked Out' : 'Checked In',
   },
 ];
@@ -49,10 +48,7 @@ export default function StickyHeadTable() {
 
   useEffect(_ => {
     const fetchData = async () => {
-        const { data } = await axios({
-            method: 'get',
-            url: 'http://localhost:3001/books',
-        })
+        const { data } = await axiosClient.get('/books');
         setRows(data.books);
       };
       fetchData();

@@ -3,6 +3,7 @@ import classes from './Card.module.scss';
 import placeholder from './Placeholder_SM.svg'
 import { useHistory } from 'react-router-dom';
 import { modalContext } from '../../../context/ModalContext';
+import { axiosClient } from '../../../axios/client';
 
 const axios = require('axios').default;
 
@@ -12,15 +13,10 @@ const Card = ({ book, updateBookStatus }) => {
 
     const checkInOut = _ => {
         const call = async borrower => {
-            await axios({
-                method: 'put',
-                url: `http://localhost:3001/books/${book.id}/${book.status ? 'checkout' : 'checkin'}`,
-                data: {
-                    book: {
-                        borrower,
-                    }
-                }
-            });
+            await axiosClient.put(
+                `/books/${book.id}/${book.status ? 'checkout' : 'checkin'}`,
+                { book: { borrower }},
+            );
             updateBookStatus(book.id, book.status ? 0 : 1);
         };
         if (!book.status) {
