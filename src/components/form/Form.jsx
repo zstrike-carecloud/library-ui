@@ -83,7 +83,7 @@ const Form = _ => {
             <div className={classes.save} onClick={onSave}>SAVE</div>
             <div className={classes.form}>
                 <div className={classes.title}>
-                    <label>Title</label>
+                    <label>Title (required)</label>
                     <input type="text" name="name" onChange={({ target: { value } }) => setTitle(value)} value={title} maxLength={50} />
                 </div>
                 <div className={classes.author}>
@@ -91,7 +91,7 @@ const Form = _ => {
                     <input type="text" name="name" onChange={({ target: { value } }) => setAuthor(value)} value={author} maxLength={50} />
                 </div>
                 <div className={classes.isbn}>
-                    <label>Isbn</label>
+                    <label>Isbn (required)</label>
                     <input type="text" name="name" onChange={({ target: { value } }) => setIsbn(value)} value={isbn} maxLength={17} onBlur={e => e.target.reportValidity()} pattern={isbnValidation} title={"Ensure valid ISBN 10 or 13"} />
                 </div>
                 <div className={classes.synopsis}>

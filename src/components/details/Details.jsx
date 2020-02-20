@@ -42,7 +42,7 @@ const Details = _ => {
             <img className={classes.cover} src={(details && details.image) ? details.image : noCover} alt="cover" />
             <h3 className={classes.title}>{details && details.title}</h3>
             <p className={classes.author}>{details && details.author}</p>
-            <p className={classes.author}>ISBN: {details && details.isbn}</p>
+            <p className={classes.isbn}>ISBN: {details && details.isbn}</p>
             <p className={classes.synopsis}>{details && details.description}</p>
         </div>
     );

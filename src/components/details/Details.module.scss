@@ -12,6 +12,7 @@
       'cover cover empty empty edit checkButton'
       'cover cover title title right right'
       'cover cover author author footer footer'
+      'cover cover isbn isbn footer footer'
       'cover cover synopsis synopsis synopsis synopsis'
       'cover cover synopsis synopsis synopsis synopsis'
       'cover cover synopsis synopsis synopsis synopsis';
@@ -61,6 +62,10 @@
 
 .author {
     grid-area: author;
+}
+
+.isbn {
+    grid-area: isbn;
 }
 
 .synopsis {

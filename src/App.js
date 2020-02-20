@@ -84,7 +84,7 @@ function App() {
               path={`/books/report`}
               render={_ => 
                 (
-                  <div className={classes.formContent}>
+                  <div className={classes.tableContent}>
                     <Report />
                   </div>
                 )}

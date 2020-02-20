@@ -52,3 +52,11 @@
   padding-top: 30px;
   background-color: rgb(220, 220, 220);
 }
+
+.tableContent {
+  height: 100%;
+  min-height: 100vh;
+  padding: 80px 20px 0px 20px;
+  background-color: rgb(220, 220, 220);
+  z-index: 0;
+}

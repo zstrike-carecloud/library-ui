@@ -7,9 +7,9 @@ const Navbar = () => {
     return (
         <div className={classes.container}>
             <img src={logo} alt="logo" />
-            <NavLink activeClassName="in-use" to="/">BOOKS</NavLink>
-            <NavLink to="#news">TASKS</NavLink>
-            <NavLink to="#contact">MESSAGES</NavLink>
+            <NavLink exact activeStyle={{ color: '#FFB300' }} to="/">BOOKS</NavLink>
+            <NavLink activeClassName={classes.disabled} to="/">TASKS</NavLink>
+            <NavLink activeClassName={classes.disabled} to="/">MESSAGES</NavLink>
             <div className={classes.right}>
                 <NavLink to="/books/report">Report</NavLink>
                 <NavLink className={classes.addBookButton} to="/books/new">
