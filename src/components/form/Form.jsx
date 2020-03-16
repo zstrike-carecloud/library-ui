@@ -6,6 +6,11 @@ import selectImage from './Placeholder.svg';
 import { axiosClient } from '../../axios/client';
 
 const Form = _ => {
+    // const formDataReducer = (state, action) => {
+    //     switch (action.type) {
+    //         case 'SET_DATA'
+    //     }
+    // }
     const history = useHistory();
     const [image, setImage] = useState();
     const [title, setTitle] = useState('');
@@ -83,7 +88,7 @@ const Form = _ => {
             <div className={classes.save} onClick={onSave}>SAVE</div>
             <div className={classes.form}>
                 <div className={classes.title}>
-                    <label>Title (required)</label>
+                    <label>Title</label>
                     <input type="text" name="name" onChange={({ target: { value } }) => setTitle(value)} value={title} maxLength={50} />
                 </div>
                 <div className={classes.author}>
@@ -91,7 +96,7 @@ const Form = _ => {
                     <input type="text" name="name" onChange={({ target: { value } }) => setAuthor(value)} value={author} maxLength={50} />
                 </div>
                 <div className={classes.isbn}>
-                    <label>Isbn (required)</label>
+                    <label>Isbn</label>
                     <input type="text" name="name" onChange={({ target: { value } }) => setIsbn(value)} value={isbn} maxLength={17} onBlur={e => e.target.reportValidity()} pattern={isbnValidation} title={"Ensure valid ISBN 10 or 13"} />
                 </div>
                 <div className={classes.synopsis}>

@@ -13,7 +13,7 @@
 
 .modalContentBox {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     border-radius: 5px;
@@ -55,4 +55,12 @@
 .buttonContainer .cancelButton {
     background-color: white;
     color: rgb(69,69,69);
+}
+
+@media only screen and (max-width: 450px) {
+    .modalContentBox {
+      height: 125px;
+      width: 60%;
+      margin: 55% auto;
+    }
 }
